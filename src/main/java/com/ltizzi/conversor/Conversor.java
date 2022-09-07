@@ -11,6 +11,16 @@ import javax.swing.*;
  */
 public class Conversor {
 
+  static void continuar() {
+
+    int respuesta = JOptionPane.showConfirmDialog(null, "Desea continuar?");
+    if (JOptionPane.OK_OPTION == respuesta) {
+      System.out.println("El usuario eligió continuar");
+    } else {
+      JOptionPane.showMessageDialog(null, "Programa finalizado");
+    }
+  }
+
   public static void main(String[] args) {
 
     OpcionesConversion opcionDeConversion = new OpcionesConversion();
@@ -28,21 +38,35 @@ public class Conversor {
               .toString();
       switch (opciones) {
         case "Conversor de Monedas":
-          String input = JOptionPane.showInputDialog(null, "Ingrese una cantidad a convertir");
-          double cantidad = Double.parseDouble(input);
-          opcionDeConversion.convertirMonedas(cantidad);
+          {
+            String input = JOptionPane.showInputDialog(null, "Ingrese una cantidad a convertir");
+            try {
+              double cantidad = Double.parseDouble(input);
+              opcionDeConversion.convertirMonedas(cantidad);
 
-          int respuesta = JOptionPane.showConfirmDialog(null, "Desea continuar?");
-          if (JOptionPane.OK_OPTION == respuesta) {
-            System.out.println("El usuario eligió continuar");
-          } else {
-            JOptionPane.showMessageDialog(null, "Programa finalizado");
+            } catch (Exception e) {
+              e.getMessage();
+              JOptionPane.showMessageDialog(
+                  null, "Ingrese una cantidad válida (sin símbolos ni letras)");
+            }
+            continuar();
             break;
           }
-          break;
+
         case "Conversor de Temperatura":
-          System.out.println("Temperatura");
-          break;
+          {
+            String input = JOptionPane.showInputDialog(null, "Ingrese temperatura a convertir");
+            try {
+              double cantidad = Double.parseDouble(input);
+              opcionDeConversion.convertirTemperatura(cantidad);
+            } catch (Exception e) {
+              e.getMessage();
+              JOptionPane.showMessageDialog(
+                  null, "Ingrese una temperatura válida (sin símbolos ni letras");
+            }
+            continuar();
+            break;
+          }
       }
     }
   }

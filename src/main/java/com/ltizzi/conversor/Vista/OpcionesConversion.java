@@ -1,7 +1,10 @@
 package com.ltizzi.conversor.Vista;
 
+import com.ltizzi.conversor.Model.Celsius;
 import com.ltizzi.conversor.Model.Dolar;
 import com.ltizzi.conversor.Model.Euro;
+import com.ltizzi.conversor.Model.Farenheit;
+import com.ltizzi.conversor.Model.Kelvin;
 import com.ltizzi.conversor.Model.LibraEsterlina;
 import com.ltizzi.conversor.Model.PesoArgentino;
 import com.ltizzi.conversor.Model.Real;
@@ -211,6 +214,124 @@ public class OpcionesConversion {
           double resultado = conServ.convertirMoneda(yuan, peso, cantidad);
           System.out.println(resultado);
           JOptionPane.showMessageDialog(null, "Tienes " + resultado + " pesos.");
+          break;
+        }
+    }
+  }
+
+  public void convertirTemperatura(double temperatura) {
+    String opcion =
+        (JOptionPane.showInputDialog(
+                null,
+                "Elige la unidad a la que deseas convertir la temperatura",
+                "Unidades de temperatura",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                new Object[] {
+                  "De Kelvin a Celsius",
+                  "De Kelvin a Farenheit",
+                  "De Celsius a Kelvin",
+                  "De Celsius a Farenheit",
+                  "De Farenheit a Celsius",
+                  "De Farenheit a Kelvin"
+                },
+                "Selección"))
+            .toString();
+    switch (opcion) {
+      case "De Kelvin a Celsius":
+        {
+          Kelvin kelvin = new Kelvin();
+          Celsius celsius = new Celsius();
+          double resultado = conServ.convertirTempratura(kelvin, celsius, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + kelvin.getSigno()
+                  + " en "
+                  + resultado
+                  + celsius.getSigno());
+          break;
+        }
+      case "De Kelvin a Farenheit":
+        {
+          Kelvin kelvin = new Kelvin();
+          Farenheit farenheit = new Farenheit();
+          double resultado = conServ.convertirTempratura(kelvin, farenheit, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + kelvin.getSigno()
+                  + " en "
+                  + resultado
+                  + farenheit.getSigno());
+          break;
+        }
+      case "De Celsius a Kelvin":
+        {
+          Celsius celsius = new Celsius();
+          Kelvin kelvin = new Kelvin();
+          double resultado = conServ.convertirTempratura(celsius, kelvin, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + celsius.getSigno()
+                  + " en "
+                  + resultado
+                  + kelvin.getSigno());
+          break;
+        }
+      case "De Celsius a Farenheit":
+        {
+          Celsius celsius = new Celsius();
+          Farenheit farenheit = new Farenheit();
+          double resultado = conServ.convertirTempratura(celsius, farenheit, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + celsius.getSigno()
+                  + " en "
+                  + resultado
+                  + farenheit.getSigno());
+          break;
+        }
+      case "De Farenheit a Celsius":
+        {
+          Farenheit farenheit = new Farenheit();
+          Celsius celsius = new Celsius();
+          double resultado = conServ.convertirTempratura(farenheit, celsius, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + farenheit.getSigno()
+                  + " en "
+                  + resultado
+                  + celsius.getSigno());
+          break;
+        }
+      case "De Farenheit a Kelvin":
+        {
+          Farenheit farenheit = new Farenheit();
+          Kelvin kelvin = new Kelvin();
+          double resultado = conServ.convertirTempratura(farenheit, kelvin, temperatura);
+          System.out.println(resultado);
+          JOptionPane.showMessageDialog(
+              null,
+              "Convertidos "
+                  + temperatura
+                  + farenheit.getSigno()
+                  + " en "
+                  + resultado
+                  + kelvin.getSigno());
           break;
         }
     }
